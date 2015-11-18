@@ -3,9 +3,10 @@ package httpapi
 
 import (
 	"fmt"
-	"github.com/HouzuoGuo/tiedot/db"
-	"github.com/HouzuoGuo/tiedot/tdlog"
 	"net/http"
+	"tiedot/db"
+	"tiedot/tdlog"
+	"tiedot/webcp"
 )
 
 var (
@@ -87,4 +88,5 @@ func ServeEndpoints() {
 	// misc (stop-the-world)
 	http.HandleFunc("/shutdown", Shutdown)
 	http.HandleFunc("/dump", Dump)
+	webcp.RegisterWebCp()
 }

@@ -39,8 +39,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/HouzuoGuo/tiedot/db"
-	"github.com/HouzuoGuo/tiedot/tdlog"
+	"tiedot/db"
+	"tiedot/tdlog"
+
 	jwt "github.com/dgrijalva/jwt-go"
 )
 

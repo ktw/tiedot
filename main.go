@@ -3,8 +3,6 @@ package main
 
 import (
 	"flag"
-	"github.com/HouzuoGuo/tiedot/httpapi"
-	"github.com/HouzuoGuo/tiedot/tdlog"
 	"io/ioutil"
 	"os"
 	"os/signal"
@@ -12,6 +10,9 @@ import (
 	"runtime/pprof"
 	"strconv"
 	"strings"
+	"tiedot/httpapi"
+	"tiedot/tdlog"
+	"tiedot/webcp"
 )
 
 // Read Linux system VM parameters and print performance configuration advice when necessary.
@@ -77,9 +78,13 @@ func main() {
 	flag.StringVar(&jwtPubKey, "jwtpubkey", "", "(HTTP JWT server) Public key for signing tokens (empty to disable JWT)")
 	flag.StringVar(&jwtPrivateKey, "jwtprivatekey", "", "(HTTP JWT server) Private key for decoding tokens (empty to disable JWT)")
 
-	// Benchmark mode params
-	flag.IntVar(&benchSize, "benchsize", 400000, "Benchmark sample size")
-	flag.BoolVar(&benchCleanup, "benchcleanup", true, "Whether to clean up (delete benchmark DB) after benchmark")
+	flag.StringVar(&webcp.WebCp, "webcp", "admin", "(HTTP API) web control panel route (without leading slash)")
+	/*
+		// The following could not build
+		// Benchmark mode params
+		flag.IntVar(&benchSize, "benchsize", 400000, "Benchmark sample size")
+		flag.BoolVar(&benchCleanup, "benchcleanup", true, "Whether to clean up (delete benchmark DB) after benchmark")
+	*/
 	flag.Parse()
 
 	// User must specify a mode to run
@@ -140,14 +145,17 @@ func main() {
 			os.Exit(1)
 		}
 		httpapi.Start(dir, port, tlsCrt, tlsKey, jwtPubKey, jwtPrivateKey)
-	case "example":
+	/*
+		// The following could not build:
+		case "example":
 		// Run embedded usage examples
 		embeddedExample()
-	case "bench":
-		// Benchmark scenarios
-		benchmark()
-	case "bench2":
-		benchmark2()
+			case "bench":
+				// Benchmark scenarios
+				benchmark()
+			case "bench2":
+				benchmark2()
+	*/
 	default:
 		flag.PrintDefaults()
 		return
