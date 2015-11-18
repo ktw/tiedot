@@ -14,6 +14,7 @@ panel application entirely. If you wish to do so, please follow these steps:
 
 You can read more about go.rice here: https://github.com/GeertJohan/go.rice
 */
+/*
 package webcp
 
 import (
@@ -62,3 +63,4 @@ func handleWebCp(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 }
+*/

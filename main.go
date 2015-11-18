@@ -12,7 +12,7 @@ import (
 	"strings"
 	"tiedot/httpapi"
 	"tiedot/tdlog"
-	"tiedot/webcp"
+	"tiedot/webui"
 )
 
 // Read Linux system VM parameters and print performance configuration advice when necessary.
@@ -78,7 +78,7 @@ func main() {
 	flag.StringVar(&jwtPubKey, "jwtpubkey", "", "(HTTP JWT server) Public key for signing tokens (empty to disable JWT)")
 	flag.StringVar(&jwtPrivateKey, "jwtprivatekey", "", "(HTTP JWT server) Private key for decoding tokens (empty to disable JWT)")
 
-	flag.StringVar(&webcp.WebCp, "webcp", "admin", "(HTTP API) web control panel route (without leading slash)")
+	flag.StringVar(&webui.WebUI, "webui", "admin", "(HTTP API) web control panel route (without leading slash)")
 	/*
 		// The following could not build
 		// Benchmark mode params

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"tiedot/db"
 	"tiedot/tdlog"
-	"tiedot/webcp"
+	"tiedot/webui"
 )
 
 var (
@@ -88,5 +88,5 @@ func ServeEndpoints() {
 	// misc (stop-the-world)
 	http.HandleFunc("/shutdown", Shutdown)
 	http.HandleFunc("/dump", Dump)
-	webcp.RegisterWebCp()
+	webui.RegisterWebUI()
 }
